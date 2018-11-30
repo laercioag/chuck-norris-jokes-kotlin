@@ -1,0 +1,20 @@
+repositories {
+    jcenter()
+}
+
+configurations {
+    detekt
+}
+
+task detekt(type: JavaExec) {
+    main = "io.gitlab.arturbosch.detekt.cli.Main"
+    classpath = configurations.detekt
+    def input = "$projectDir/app/src/main/kotlin"
+    def filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+    def params = ['-i', input, '-f', filters]
+    args(params)
+}
+
+dependencies {
+    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.0.0-RC11'
+}
