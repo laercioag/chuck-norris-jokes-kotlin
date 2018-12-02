@@ -3,8 +3,8 @@ package com.laercioag.chuckynorrisjokes.data.dto
 import com.google.gson.annotations.SerializedName
 
 data class JokeDto(
-    @SerializedName("category")
-    val category: List<CategoryDto> = listOf(),
+    @SerializedName("categories")
+    val categories: List<CategoryDto> = listOf(),
     @SerializedName("icon_url")
     val iconUrl: String = "",
     @SerializedName("id")
