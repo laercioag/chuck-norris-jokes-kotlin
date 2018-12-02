@@ -12,13 +12,13 @@ class TestUtils {
             return "Generic String"
         }
 
-        fun getTestCategory(): CategoryDto {
+        fun getTestCategoryDto(): CategoryDto {
             return "CategoryDto"
         }
 
         fun getTestJokeDto(): JokeDto {
             return JokeDto(
-                categoryDto = generateCategoryDtoList(),
+                category = generateCategoryDtoList(),
                 iconUrl = genericString(),
                 id = genericString(),
                 url = genericString(),
@@ -27,7 +27,7 @@ class TestUtils {
         }
 
         fun generateCategoryDtoList(): List<CategoryDto> {
-            return (0..10).map { getTestCategory() }
+            return (0..10).map { getTestCategoryDto() }
         }
 
         fun getJson(path: String): String {
