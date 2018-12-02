@@ -34,5 +34,6 @@ class CategoryRepositoryImplTest {
             .assertNoErrors()
             .assertValueCount(1)
             .assertValue { result -> result.size == categoryListResult.size }
+            .assertValue(categoryListResult)
     }
 }

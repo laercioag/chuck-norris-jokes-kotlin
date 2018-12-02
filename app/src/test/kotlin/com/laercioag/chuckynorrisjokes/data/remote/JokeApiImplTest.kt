@@ -1,7 +1,7 @@
 package com.laercioag.chuckynorrisjokes.data.remote
 
 import com.laercioag.chuckynorrisjokes.data.TestUtils
-import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.getTestCategory
+import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.getTestCategoryDto
 import com.laercioag.chuckynorrisjokes.data.remote.impl.JokeApiImpl
 import junit.framework.TestCase
 import okhttp3.mockwebserver.MockResponse
@@ -35,13 +35,13 @@ class JokeApiImplTest {
 
     @Test
     fun testWhenGetRandomJokeFromCategoryReturnsJoke() {
-        val category = getTestCategory()
+        val category = getTestCategoryDto()
         val path = "/random?categoryDto=$category"
         val mockResponse = MockResponse()
             .setResponseCode(200)
             .setBody(TestUtils.getJson("json/joke/joke.json"))
         mockWebServer.enqueue(mockResponse)
-        api.getRandomJokeFromCategory(getTestCategory()).test()
+        api.getRandomJokeFromCategory(getTestCategoryDto()).test()
             .assertNoErrors()
             .assertValueCount(1)
         val request = mockWebServer.takeRequest()
@@ -50,7 +50,7 @@ class JokeApiImplTest {
 
     @Test
     fun testWhenGetRandomJokeFromCategoryReturnsError() {
-        val category = getTestCategory()
+        val category = getTestCategoryDto()
         val path = "/random?categoryDto=$category"
         val mockResponse = MockResponse()
             .setResponseCode(500)

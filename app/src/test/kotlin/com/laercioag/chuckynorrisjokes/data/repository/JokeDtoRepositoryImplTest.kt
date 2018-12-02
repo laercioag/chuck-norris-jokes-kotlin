@@ -1,6 +1,6 @@
 package com.laercioag.chuckynorrisjokes.data.repository
 
-import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.getTestCategory
+import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.getTestCategoryDto
 import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.getTestJokeDto
 import com.laercioag.chuckynorrisjokes.data.remote.JokeApi
 import com.laercioag.chuckynorrisjokes.data.remote.impl.JokeApiImpl
@@ -28,7 +28,7 @@ class JokeDtoRepositoryImplTest {
 
     @Test
     fun testWhenGetRandomJokeFromCategoryReturnsExpectedResults() {
-        val category = getTestCategory()
+        val category = getTestCategoryDto()
         val jokeResult = getTestJokeDto()
         `when`(api.getRandomJokeFromCategory(category))
             .thenReturn(Single.just(jokeResult))
