@@ -13,12 +13,12 @@ class TestUtils {
         }
 
         fun getTestCategoryDto(): CategoryDto {
-            return "CategoryDto"
+            return "Test Category"
         }
 
         fun getTestJokeDto(): JokeDto {
             return JokeDto(
-                category = generateCategoryDtoList(),
+                categories = generateCategoryDtoList(),
                 iconUrl = genericString(),
                 id = genericString(),
                 url = genericString(),
