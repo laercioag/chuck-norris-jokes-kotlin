@@ -2,7 +2,7 @@ package com.laercioag.chuckynorrisjokes.presentation.app
 
 import android.app.Activity
 import android.app.Application
-import com.laercioag.chuckynorrisjokes.di.DaggerAppComponent
+import com.laercioag.chuckynorrisjokes.di.component.DaggerAppComponent
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
