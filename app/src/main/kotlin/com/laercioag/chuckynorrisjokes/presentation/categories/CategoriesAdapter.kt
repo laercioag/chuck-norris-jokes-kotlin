@@ -8,10 +8,10 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.laercioag.chuckynorrisjokes.R
 import com.laercioag.chuckynorrisjokes.domain.entity.Category
 import com.laercioag.chuckynorrisjokes.extensions.capitalizeWords
+import com.laercioag.chuckynorrisjokes.helper.ImageHelper
 
 private const val LIST_ITEM_VIEW = 1
 private const val FOOTER_ITEM_VIEW = 2
@@ -44,7 +44,7 @@ class CategoriesAdapter(private val context: Context) : RecyclerView.Adapter<Rec
             holder.title.text = items[position].description.capitalizeWords()
             holder.item.setOnClickListener { itemListener(items[position]) }
         } else if (holder is FooterViewHolder) {
-            Glide.with(context).asGif().load(R.raw.chuck_norris_dancing).into(holder.image)
+            ImageHelper.loadGif(context, holder.image, R.raw.chuck_norris_dancing)
         }
     }
 
@@ -68,6 +68,6 @@ class CategoriesAdapter(private val context: Context) : RecyclerView.Adapter<Rec
     }
 
     class FooterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val image: AppCompatImageView = itemView.findViewById(R.id.image)
+        val image: AppCompatImageView = itemView.findViewById(R.id.footerImage)
     }
 }

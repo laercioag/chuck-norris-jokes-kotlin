@@ -62,6 +62,7 @@ dependencies {
     implementation Dependencies.dagger
     implementation Dependencies.daggerAndroid
     implementation Dependencies.glide
+    implementation Dependencies.browser
 
     kapt KaptDependencies.daggerCompiler
     kapt KaptDependencies.daggerAndroidCompiler

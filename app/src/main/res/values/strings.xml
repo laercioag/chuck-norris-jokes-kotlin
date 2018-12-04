@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Chucky Norris Jokes</string>
     <string name="content_provider">Content provided by chucknorris.io</string>
+    <string name="link_button">Go To Website</string>
 </resources>

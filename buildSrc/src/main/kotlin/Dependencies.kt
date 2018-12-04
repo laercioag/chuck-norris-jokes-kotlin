@@ -21,6 +21,7 @@ object Versions {
     val rxJavaVersion = "2.2.4"
     val daggerVersion = "2.19"
     val glideVersion = "4.8.0"
+    val browserVersion = "1.0.0"
 
     val jUnitVersion = "4.12"
     val mockitoVersion = "2.23.4"
@@ -55,6 +56,7 @@ object Dependencies {
     val dagger = "com.google.dagger:dagger:${Versions.daggerVersion}"
     val daggerAndroid = "com.google.dagger:dagger-android-support:${Versions.daggerVersion}"
     val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
+    val browser = "androidx.browser:browser:${Versions.browserVersion}"
 }
 
 object KaptDependencies {

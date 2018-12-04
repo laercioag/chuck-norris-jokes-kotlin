@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.laercioag.chuckynorrisjokes.R
 import com.laercioag.chuckynorrisjokes.domain.entity.Category
+import com.laercioag.chuckynorrisjokes.extensions.invisible
+import com.laercioag.chuckynorrisjokes.extensions.visible
 import com.laercioag.chuckynorrisjokes.presentation.base.BaseFragment
 import com.laercioag.chuckynorrisjokes.presentation.randomjoke.RandomJokeActivity
 import kotlinx.android.synthetic.main.fragment_categories.*
 import javax.inject.Inject
-
 
 class CategoriesFragment : BaseFragment(), CategoriesContract.View {
 
@@ -46,13 +47,13 @@ class CategoriesFragment : BaseFragment(), CategoriesContract.View {
 
     override fun showLoading() {
         if (!swipeRefreshLayout.isRefreshing) {
-            loading.visibility = View.VISIBLE
+            loading.visible()
         }
     }
 
     override fun hideLoading() {
         swipeRefreshLayout.isRefreshing = false
-        loading.visibility = View.INVISIBLE
+        loading.invisible()
     }
 
     override fun handleError(throwable: Throwable) {
