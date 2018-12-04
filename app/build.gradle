@@ -50,9 +50,12 @@ dependencies {
     implementation Dependencies.constraintLayout
     implementation Dependencies.recyclerView
     implementation Dependencies.androidKtx
+    implementation Dependencies.androidKtxFragment
     implementation Dependencies.gson
     implementation Dependencies.rxJava
     implementation Dependencies.rxAndroid
+    implementation Dependencies.okhttp
+    implementation Dependencies.okhttpLogging
     implementation Dependencies.retrofit
     implementation Dependencies.retrofitGson
     implementation Dependencies.retrofitRxJava

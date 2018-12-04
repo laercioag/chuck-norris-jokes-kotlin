@@ -1,53 +1,33 @@
 package com.laercioag.chuckynorrisjokes.presentation.categories
 
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.transaction
 import com.laercioag.chuckynorrisjokes.R
-import com.laercioag.chuckynorrisjokes.domain.usecase.GetCategoriesUseCase
-import com.laercioag.chuckynorrisjokes.domain.usecase.GetRandomJokeUseCase
-import dagger.android.AndroidInjection
-import io.reactivex.disposables.CompositeDisposable
-import javax.inject.Inject
+import com.laercioag.chuckynorrisjokes.presentation.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_categories.*
 
-class CategoriesActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var getCategoriesUseCase: GetCategoriesUseCase
-
-    @Inject
-    lateinit var getRandomJokeUseCase: GetRandomJokeUseCase
-
-    private val compositeDisposable = CompositeDisposable()
+class CategoriesActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AndroidInjection.inject(this)
-        setContentView(R.layout.activity_category)
-        testData()
+        setContentView(R.layout.activity_categories)
+        setupToolbar()
+        setupFragment()
     }
 
-    override fun onDestroy() {
-        compositeDisposable.dispose()
-        super.onDestroy()
+    private fun setupToolbar() {
+        setSupportActionBar(toolbar)
     }
 
-    private fun testData() {
-        compositeDisposable.add(
-            getCategoriesUseCase.run().subscribe({
-                Log.d("Categories", it.toString())
-                it.map { category ->
-                    getRandomJokeUseCase.run(category)
-                        .subscribe({ joke ->
-                            Log.d("JokeDto", joke.toString())
-                        }, { throwable ->
-                            Log.e("JokeDto", "Fail", throwable)
-                        })
-                }
-            }, {
-                Log.e("Categories", "Fail", it)
-            })
-        )
+    private fun setupFragment() {
+        var categoriesFragment = supportFragmentManager.findFragmentById(R.id.content)
+        if (categoriesFragment == null) {
+            categoriesFragment = CategoriesFragment()
+            supportFragmentManager.transaction {
+                replace(R.id.content, categoriesFragment)
+            }
+        }
     }
 
 }

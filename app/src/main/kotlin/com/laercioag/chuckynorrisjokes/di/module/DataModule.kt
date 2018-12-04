@@ -11,6 +11,9 @@ import com.laercioag.chuckynorrisjokes.data.repository.impl.CategoryRepositoryIm
 import com.laercioag.chuckynorrisjokes.data.repository.impl.JokeRepositoryImpl
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -21,8 +24,16 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit =
+    fun provideClient(): OkHttpClient =
+        OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor().setLevel(Level.BODY))
+            .build()
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(client: OkHttpClient): Retrofit =
         Retrofit.Builder()
+            .client(client)
             .baseUrl("https://api.chucknorris.io/jokes/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -40,7 +51,7 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideCategoryRepository(api: CategoryApiImpl): CategoryRepository =
+    fun provideCategoryRepository(api: CategoryApi): CategoryRepository =
         CategoryRepositoryImpl(api)
 
     @Provides
@@ -50,7 +61,7 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideJokeRepository(api: JokeApiImpl): JokeRepository =
+    fun provideJokeRepository(api: JokeApi): JokeRepository =
         JokeRepositoryImpl(api)
 
 }

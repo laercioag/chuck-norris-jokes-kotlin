@@ -5,9 +5,8 @@ import com.laercioag.chuckynorrisjokes.domain.entity.Category
 import com.laercioag.chuckynorrisjokes.domain.mapper.CategoryDtoMapper
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
-import javax.inject.Inject
 
-class GetCategoriesUseCase @Inject constructor(
+class GetCategoriesUseCase(
     private val repository: CategoryRepository,
     private val mapper: CategoryDtoMapper
 ) {

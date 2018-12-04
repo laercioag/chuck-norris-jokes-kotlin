@@ -7,9 +7,8 @@ import com.laercioag.chuckynorrisjokes.domain.mapper.CategoryDtoMapper
 import com.laercioag.chuckynorrisjokes.domain.mapper.JokeDtoMapper
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
-import javax.inject.Inject
 
-class GetRandomJokeUseCase @Inject constructor(
+class GetRandomJokeUseCase(
     private val repository: JokeRepository,
     private val categoryDtoMapper: CategoryDtoMapper,
     private val jokeDtoMapper: JokeDtoMapper

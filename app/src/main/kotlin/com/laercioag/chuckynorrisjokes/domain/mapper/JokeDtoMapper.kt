@@ -2,9 +2,8 @@ package com.laercioag.chuckynorrisjokes.domain.mapper
 
 import com.laercioag.chuckynorrisjokes.data.dto.JokeDto
 import com.laercioag.chuckynorrisjokes.domain.entity.Joke
-import javax.inject.Inject
 
-class JokeDtoMapper @Inject constructor(private val categoryDtoMapper: CategoryDtoMapper) : Mapper<JokeDto, Joke> {
+class JokeDtoMapper(private val categoryDtoMapper: CategoryDtoMapper) : Mapper<JokeDto, Joke> {
 
     override fun map(param: JokeDto): Joke = with(param) {
         Joke(
