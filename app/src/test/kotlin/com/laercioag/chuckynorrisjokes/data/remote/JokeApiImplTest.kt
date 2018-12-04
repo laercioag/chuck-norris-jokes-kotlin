@@ -12,6 +12,7 @@ import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.net.URLEncoder
 
 class JokeApiImplTest {
 
@@ -36,7 +37,8 @@ class JokeApiImplTest {
     @Test
     fun testWhenGetRandomJokeFromCategoryReturnsJoke() {
         val category = getTestCategoryDto()
-        val path = "/random?categoryDto=$category"
+        val path = "/random?category=" + URLEncoder.encode(category, "UTF-8")
+            .replace("+", "%20")
         val mockResponse = MockResponse()
             .setResponseCode(200)
             .setBody(TestUtils.getJson("json/joke/joke.json"))
@@ -51,7 +53,8 @@ class JokeApiImplTest {
     @Test
     fun testWhenGetRandomJokeFromCategoryReturnsError() {
         val category = getTestCategoryDto()
-        val path = "/random?categoryDto=$category"
+        val path = "/random?category=" + URLEncoder.encode(category, "UTF-8")
+            .replace("+", "%20")
         val mockResponse = MockResponse()
             .setResponseCode(500)
         mockWebServer.enqueue(mockResponse)

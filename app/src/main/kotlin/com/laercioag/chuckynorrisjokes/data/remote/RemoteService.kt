@@ -12,5 +12,5 @@ interface RemoteService {
     fun getCategories(): Single<List<CategoryDto>>
 
     @GET("random")
-    fun getRandomJokeFromCategory(@Query("categoryDto") category: CategoryDto): Single<JokeDto>
+    fun getRandomJokeFromCategory(@Query("category") category: CategoryDto): Single<JokeDto>
 }
