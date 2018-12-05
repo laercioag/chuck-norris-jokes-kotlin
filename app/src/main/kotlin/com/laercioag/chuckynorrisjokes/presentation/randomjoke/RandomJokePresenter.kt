@@ -3,7 +3,9 @@ package com.laercioag.chuckynorrisjokes.presentation.randomjoke
 import com.laercioag.chuckynorrisjokes.domain.entity.Category
 import com.laercioag.chuckynorrisjokes.domain.entity.Joke
 import com.laercioag.chuckynorrisjokes.domain.usecase.GetRandomJokeUseCase
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 
 class RandomJokePresenter(private val getRandomJokeUseCase: GetRandomJokeUseCase) : RandomJokeContract.Presenter {
@@ -23,10 +25,13 @@ class RandomJokePresenter(private val getRandomJokeUseCase: GetRandomJokeUseCase
     override fun getRandomJoke(category: Category) {
         view?.showLoading()
         compositeDisposable.add(
-            getRandomJokeUseCase.run(category).subscribe(
-                this::handleGetRandomJokeResult,
-                this::handleError
-            )
+            getRandomJokeUseCase.run(category)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                    this::handleGetRandomJokeResult,
+                    this::handleError
+                )
         )
     }
 

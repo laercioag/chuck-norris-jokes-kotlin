@@ -6,8 +6,6 @@ import com.laercioag.chuckynorrisjokes.data.remote.JokeApi
 import com.laercioag.chuckynorrisjokes.data.remote.impl.JokeApiImpl
 import com.laercioag.chuckynorrisjokes.data.repository.impl.JokeRepositoryImpl
 import io.reactivex.Single
-import io.reactivex.plugins.RxJavaPlugins
-import io.reactivex.schedulers.Schedulers
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
@@ -20,10 +18,8 @@ class JokeDtoRepositoryImplTest {
 
     @Before
     fun before() {
-        RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
         api = Mockito.mock(JokeApiImpl::class.java)
         repository = JokeRepositoryImpl(api)
-
     }
 
     @Test

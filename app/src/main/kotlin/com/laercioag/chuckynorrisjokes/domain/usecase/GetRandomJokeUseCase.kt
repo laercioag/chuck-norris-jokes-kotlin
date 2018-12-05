@@ -6,7 +6,6 @@ import com.laercioag.chuckynorrisjokes.domain.entity.Joke
 import com.laercioag.chuckynorrisjokes.domain.mapper.CategoryDtoMapper
 import com.laercioag.chuckynorrisjokes.domain.mapper.JokeDtoMapper
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 
 class GetRandomJokeUseCase(
     private val repository: JokeRepository,
@@ -18,6 +17,5 @@ class GetRandomJokeUseCase(
         val categoryDto = categoryDtoMapper.mapReverse(category)
         return repository.getRandomJokeFromCategory(categoryDto)
             .map(jokeDtoMapper::map)
-            .observeOn(AndroidSchedulers.mainThread())
     }
 }

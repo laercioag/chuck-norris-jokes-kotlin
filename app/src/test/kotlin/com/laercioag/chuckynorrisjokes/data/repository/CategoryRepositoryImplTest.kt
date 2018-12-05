@@ -20,7 +20,6 @@ class CategoryRepositoryImplTest {
 
     @Before
     fun before() {
-        RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
         api = mock(CategoryApiImpl::class.java)
         repository = CategoryRepositoryImpl(api)
 

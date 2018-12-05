@@ -11,9 +11,6 @@ import com.laercioag.chuckynorrisjokes.domain.mapper.CategoryDtoMapper
 import com.laercioag.chuckynorrisjokes.domain.mapper.JokeDtoMapper
 import com.laercioag.chuckynorrisjokes.domain.usecase.GetRandomJokeUseCase
 import io.reactivex.Single
-import io.reactivex.android.plugins.RxAndroidPlugins
-import io.reactivex.plugins.RxJavaPlugins
-import io.reactivex.schedulers.Schedulers
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.`when`
@@ -28,8 +25,6 @@ class GetRandomJokeUseCaseTest {
 
     @Before
     fun before() {
-        RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
         repository = mock(JokeRepository::class.java)
         categoryDtoMapper = CategoryDtoMapper()
         jokeDtoMapper = JokeDtoMapper(categoryDtoMapper)
