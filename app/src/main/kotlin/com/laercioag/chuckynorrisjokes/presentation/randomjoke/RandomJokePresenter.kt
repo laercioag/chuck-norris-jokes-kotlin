@@ -20,6 +20,7 @@ class RandomJokePresenter(private val getRandomJokeUseCase: GetRandomJokeUseCase
 
     override fun detach() {
         view = null
+        compositeDisposable.clear()
     }
 
     override fun getRandomJoke(category: Category) {

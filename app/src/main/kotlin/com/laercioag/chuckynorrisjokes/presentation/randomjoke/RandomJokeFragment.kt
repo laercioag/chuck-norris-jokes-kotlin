@@ -50,6 +50,11 @@ class RandomJokeFragment : BaseFragment(), RandomJokeContract.View {
         }
     }
 
+    override fun onDestroyView() {
+        presenter.detach()
+        super.onDestroyView()
+    }
+
     override fun showLoading() {
         loading.visible()
     }

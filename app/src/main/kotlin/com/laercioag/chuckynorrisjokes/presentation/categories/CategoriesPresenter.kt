@@ -5,7 +5,6 @@ import com.laercioag.chuckynorrisjokes.domain.usecase.GetCategoriesUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
 
 class CategoriesPresenter(private val getCategoriesUseCase: GetCategoriesUseCase) :
     CategoriesContract.Presenter {
@@ -38,8 +37,8 @@ class CategoriesPresenter(private val getCategoriesUseCase: GetCategoriesUseCase
     }
 
     override fun detach() {
-        compositeDisposable.dispose()
         this.view = null
+        compositeDisposable.clear()
     }
 
     private fun handleGetCategoriesResult(result: List<Category>) {
