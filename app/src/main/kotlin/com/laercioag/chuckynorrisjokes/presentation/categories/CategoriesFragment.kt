@@ -2,10 +2,10 @@ package com.laercioag.chuckynorrisjokes.presentation.categories
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.laercioag.chuckynorrisjokes.R
@@ -42,6 +42,8 @@ class CategoriesFragment : BaseFragment(), CategoriesContract.View {
     }
 
     override fun showCategories(categories: List<Category>) {
+        errorLayout.invisible()
+        recyclerView.visible()
         adapter.setItems(categories)
     }
 
@@ -57,7 +59,9 @@ class CategoriesFragment : BaseFragment(), CategoriesContract.View {
     }
 
     override fun handleError(throwable: Throwable) {
-        Toast.makeText(context, "No connection", Toast.LENGTH_SHORT).show()
+        recyclerView.invisible()
+        errorLayout.visible()
+        Log.e(CategoriesFragment::class.java.simpleName, "Error", throwable)
     }
 
     private fun setupRecyclerView() {

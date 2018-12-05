@@ -14,7 +14,7 @@
             android:id="@+id/icon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_star_border_black_24dp"
+            app:srcCompat="@drawable/ic_star_border_black_24dp"
             android:layout_margin="16dp"
             android:clickable="false"
             app:layout_constraintTop_toTopOf="parent"

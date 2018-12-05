@@ -1,12 +1,13 @@
 package com.laercioag.chuckynorrisjokes.presentation.randomjoke
 
-import android.content.Context
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.view.isVisible
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 import com.laercioag.chuckynorrisjokes.R
 import com.laercioag.chuckynorrisjokes.domain.entity.Category
 import com.laercioag.chuckynorrisjokes.domain.entity.Joke
@@ -17,10 +18,6 @@ import com.laercioag.chuckynorrisjokes.presentation.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_random_joke.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import javax.inject.Inject
-import android.content.Intent
-import android.net.Uri
-import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.content.ContextCompat
 
 
 class RandomJokeFragment : BaseFragment(), RandomJokeContract.View {
@@ -62,7 +59,8 @@ class RandomJokeFragment : BaseFragment(), RandomJokeContract.View {
     }
 
     override fun handleError(throwable: Throwable) {
-        Toast.makeText(context, "No connection", Toast.LENGTH_SHORT).show()
+        errorLayout.visible()
+        Log.e(RandomJokeFragment::class.java.simpleName, "Error", throwable)
     }
 
     override fun showJoke(joke: Joke) {

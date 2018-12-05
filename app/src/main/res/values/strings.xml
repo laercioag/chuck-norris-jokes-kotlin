@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Chucky Norris Jokes</string>
-    <string name="content_provider">Content provided by chucknorris.io</string>
+    <string name="content_provider">Artwork "Dancing Chuck" by jesgrad07\nContent provided by chucknorris.io
+    </string>
     <string name="link_button">Go To Website</string>
+    <string name="error_message">Looks like Chuck Norris melted the Internet again.\n\nCheck your connection.</string>
 </resources>
