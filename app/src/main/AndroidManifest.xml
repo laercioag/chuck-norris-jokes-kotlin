@@ -13,15 +13,19 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:fullBackupContent="true"
-            tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".presentation.categories.CategoriesActivity">
+            android:resizeableActivity="false"
+            tools:ignore="GoogleAppIndexingWarning"
+            tools:targetApi="n">
+        <activity android:name=".presentation.categories.CategoriesActivity"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.randomjoke.RandomJokeActivity"/>
+        <activity android:name=".presentation.randomjoke.RandomJokeActivity"
+                  android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

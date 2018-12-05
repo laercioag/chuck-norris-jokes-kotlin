@@ -14,8 +14,17 @@
     </style>
 
     <style name="subtitle">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="title">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="textButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/secondaryDarkColor</item>
     </style>
 
 </resources>
