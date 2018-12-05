@@ -14,7 +14,5 @@ class CategoriesContract {
     interface Presenter : BasePresenter<View> {
 
         fun getCategories()
-
-        fun getCachedCategories()
     }
 }

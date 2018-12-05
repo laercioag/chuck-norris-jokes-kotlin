@@ -13,5 +13,10 @@ class GetCategoriesUseCase(
     fun run(): Single<List<Category>> {
         return repository.getCategories()
             .map(mapper::mapList)
+            .map { t: List<Category> ->
+                t.sortedBy {
+                    it.description
+                }
+            }
     }
 }

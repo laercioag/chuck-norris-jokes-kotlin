@@ -13,8 +13,6 @@ class CategoriesPresenter(private val getCategoriesUseCase: GetCategoriesUseCase
 
     private val compositeDisposable = CompositeDisposable()
 
-    private val categories: MutableList<Category> = mutableListOf()
-
     override fun getCategories() {
         view?.showLoading()
         compositeDisposable.add(
@@ -28,10 +26,6 @@ class CategoriesPresenter(private val getCategoriesUseCase: GetCategoriesUseCase
         )
     }
 
-    override fun getCachedCategories() {
-        view?.showCategories(categories)
-    }
-
     override fun attach(view: CategoriesContract.View) {
         this.view = view
     }
@@ -41,11 +35,7 @@ class CategoriesPresenter(private val getCategoriesUseCase: GetCategoriesUseCase
         compositeDisposable.clear()
     }
 
-    private fun handleGetCategoriesResult(result: List<Category>) {
-        categories.clear()
-        categories.addAll(result.sortedBy { category ->
-            category.description
-        })
+    private fun handleGetCategoriesResult(categories: List<Category>) {
         view?.hideLoading()
         view?.showCategories(categories)
     }
