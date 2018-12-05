@@ -1,7 +1,7 @@
-package com.laercioag.chuckynorrisjokes.domain
+package com.laercioag.chuckynorrisjokes.domain.usecase
 
-import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.getTestCategoryDto
-import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.getTestJokeDto
+import com.laercioag.chuckynorrisjokes.TestUtils.Companion.getTestCategoryDto
+import com.laercioag.chuckynorrisjokes.TestUtils.Companion.getTestJokeDto
 import com.laercioag.chuckynorrisjokes.data.dto.CategoryDto
 import com.laercioag.chuckynorrisjokes.data.dto.JokeDto
 import com.laercioag.chuckynorrisjokes.data.repository.JokeRepository
@@ -9,7 +9,6 @@ import com.laercioag.chuckynorrisjokes.domain.entity.Category
 import com.laercioag.chuckynorrisjokes.domain.entity.Joke
 import com.laercioag.chuckynorrisjokes.domain.mapper.CategoryDtoMapper
 import com.laercioag.chuckynorrisjokes.domain.mapper.JokeDtoMapper
-import com.laercioag.chuckynorrisjokes.domain.usecase.GetRandomJokeUseCase
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -42,5 +41,15 @@ class GetRandomJokeUseCaseTest {
             .assertNoErrors()
             .assertValueCount(1)
             .assertValue(jokeResult)
+    }
+
+    @Test
+    fun testWhenGetCategoriesUseCaseReturnsError() {
+        val categoryDto: CategoryDto = getTestCategoryDto()
+        val category: Category = categoryDtoMapper.map(categoryDto)
+        `when`(repository.getRandomJokeFromCategory(categoryDto)).thenReturn(Single.error(RuntimeException()))
+        getRandomJokeUseCase.run(category).test()
+            .assertError(RuntimeException::class.java)
+            .assertValueCount(0)
     }
 }

@@ -1,6 +1,6 @@
 package com.laercioag.chuckynorrisjokes.data.repository
 
-import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.generateCategoryDtoList
+import com.laercioag.chuckynorrisjokes.TestUtils.Companion.generateCategoryDtoList
 import com.laercioag.chuckynorrisjokes.data.remote.CategoryApi
 import com.laercioag.chuckynorrisjokes.data.remote.impl.CategoryApiImpl
 import com.laercioag.chuckynorrisjokes.data.repository.impl.CategoryRepositoryImpl
@@ -9,8 +9,6 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
-import io.reactivex.schedulers.Schedulers
-import io.reactivex.plugins.RxJavaPlugins
 
 
 class CategoryRepositoryImplTest {

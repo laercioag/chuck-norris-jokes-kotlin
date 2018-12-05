@@ -1,7 +1,7 @@
 package com.laercioag.chuckynorrisjokes.data.remote
 
-import com.laercioag.chuckynorrisjokes.data.TestUtils
-import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.getTestCategoryDto
+import com.laercioag.chuckynorrisjokes.TestUtils
+import com.laercioag.chuckynorrisjokes.TestUtils.Companion.getTestCategoryDto
 import com.laercioag.chuckynorrisjokes.data.remote.impl.JokeApiImpl
 import junit.framework.TestCase
 import okhttp3.mockwebserver.MockResponse

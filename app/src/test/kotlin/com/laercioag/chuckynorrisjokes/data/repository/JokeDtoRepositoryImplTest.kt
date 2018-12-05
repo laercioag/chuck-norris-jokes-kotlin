@@ -1,7 +1,7 @@
 package com.laercioag.chuckynorrisjokes.data.repository
 
-import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.getTestCategoryDto
-import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.getTestJokeDto
+import com.laercioag.chuckynorrisjokes.TestUtils.Companion.getTestCategoryDto
+import com.laercioag.chuckynorrisjokes.TestUtils.Companion.getTestJokeDto
 import com.laercioag.chuckynorrisjokes.data.remote.JokeApi
 import com.laercioag.chuckynorrisjokes.data.remote.impl.JokeApiImpl
 import com.laercioag.chuckynorrisjokes.data.repository.impl.JokeRepositoryImpl

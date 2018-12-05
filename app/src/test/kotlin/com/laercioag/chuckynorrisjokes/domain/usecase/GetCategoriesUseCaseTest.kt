@@ -1,9 +1,8 @@
-package com.laercioag.chuckynorrisjokes.domain
+package com.laercioag.chuckynorrisjokes.domain.usecase
 
-import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.generateCategoryDtoList
+import com.laercioag.chuckynorrisjokes.TestUtils.Companion.generateCategoryDtoList
 import com.laercioag.chuckynorrisjokes.data.repository.CategoryRepository
 import com.laercioag.chuckynorrisjokes.domain.mapper.CategoryDtoMapper
-import com.laercioag.chuckynorrisjokes.domain.usecase.GetCategoriesUseCase
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -32,5 +31,13 @@ class GetCategoriesUseCaseTest {
             .assertNoErrors()
             .assertValueCount(1)
             .assertValue(categoryResult)
+    }
+
+    @Test
+    fun testWhenGetCategoriesUseCaseReturnsError() {
+        `when`(repository.getCategories()).thenReturn(Single.error(RuntimeException()))
+        getCategoriesUseCase.run().test()
+            .assertError(RuntimeException::class.java)
+            .assertValueCount(0)
     }
 }

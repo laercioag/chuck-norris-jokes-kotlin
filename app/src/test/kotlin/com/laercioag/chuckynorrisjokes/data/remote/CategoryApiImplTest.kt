@@ -1,6 +1,6 @@
 package com.laercioag.chuckynorrisjokes.data.remote
 
-import com.laercioag.chuckynorrisjokes.data.TestUtils.Companion.getJson
+import com.laercioag.chuckynorrisjokes.TestUtils.Companion.getJson
 import com.laercioag.chuckynorrisjokes.data.remote.impl.CategoryApiImpl
 import junit.framework.TestCase.assertEquals
 import okhttp3.mockwebserver.MockResponse
