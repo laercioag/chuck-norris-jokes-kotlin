@@ -22,7 +22,7 @@ class App : Application(), HasActivityInjector {
             .inject(this)
     }
 
-    override fun activityInjector(): DispatchingAndroidInjector<Activity>? {
-        return dispatchingAndroidInjector
-    }
+    override fun activityInjector(): DispatchingAndroidInjector<Activity>? =
+        dispatchingAndroidInjector
+
 }

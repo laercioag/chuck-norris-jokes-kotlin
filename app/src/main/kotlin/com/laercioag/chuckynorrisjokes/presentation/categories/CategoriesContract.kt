@@ -9,10 +9,12 @@ class CategoriesContract {
     interface View : BaseView {
 
         fun showCategories(categories: List<Category>)
+
     }
 
     interface Presenter : BasePresenter<View> {
 
         fun getCategories()
+
     }
 }

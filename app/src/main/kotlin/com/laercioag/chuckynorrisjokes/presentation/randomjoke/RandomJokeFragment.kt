@@ -56,13 +56,9 @@ class RandomJokeFragment : BaseFragment(), RandomJokeContract.View {
         super.onDestroyView()
     }
 
-    override fun showLoading() {
-        loading.visible()
-    }
+    override fun showLoading() = loading.visible()
 
-    override fun hideLoading() {
-        loading.invisible()
-    }
+    override fun hideLoading() = loading.invisible()
 
     override fun handleError(throwable: Throwable) {
         errorLayout.visible()

@@ -18,4 +18,5 @@ class GetRandomJokeUseCase(
         return repository.getRandomJokeFromCategory(categoryDto)
             .map(jokeDtoMapper::map)
     }
+
 }

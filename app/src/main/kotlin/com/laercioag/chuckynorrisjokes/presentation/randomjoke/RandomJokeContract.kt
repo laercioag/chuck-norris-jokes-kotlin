@@ -8,10 +8,14 @@ import com.laercioag.chuckynorrisjokes.presentation.base.BaseView
 class RandomJokeContract {
 
     interface View : BaseView {
+
         fun showJoke(joke: Joke)
+        
     }
 
     interface Presenter : BasePresenter<View> {
+
         fun getRandomJoke(category: Category)
+
     }
 }

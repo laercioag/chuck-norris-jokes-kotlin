@@ -16,9 +16,7 @@ class CategoriesActivity : BaseActivity() {
         setupFragment()
     }
 
-    private fun setupToolbar() {
-        setSupportActionBar(toolbar)
-    }
+    private fun setupToolbar() = setSupportActionBar(toolbar)
 
     private fun setupFragment() {
         var categoriesFragment = supportFragmentManager.findFragmentById(R.id.content)

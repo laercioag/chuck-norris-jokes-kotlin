@@ -8,7 +8,6 @@ import io.reactivex.Single
 class CategoryRepositoryImpl(val api: CategoryApi) :
     CategoryRepository {
 
-    override fun getCategories(): Single<List<CategoryDto>> {
-        return api.getCategories()
-    }
+    override fun getCategories(): Single<List<CategoryDto>> = api.getCategories()
+
 }

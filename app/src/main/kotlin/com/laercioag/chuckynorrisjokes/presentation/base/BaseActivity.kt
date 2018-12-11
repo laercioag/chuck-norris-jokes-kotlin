@@ -19,7 +19,6 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector {
         super.onCreate(savedInstanceState)
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> {
-        return fragmentInjector
-    }
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
+
 }

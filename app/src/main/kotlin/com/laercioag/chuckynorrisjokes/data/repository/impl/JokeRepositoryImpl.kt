@@ -8,7 +8,7 @@ import io.reactivex.Single
 
 class JokeRepositoryImpl(private val api: JokeApi) : JokeRepository {
 
-    override fun getRandomJokeFromCategory(categoryDto: CategoryDto): Single<JokeDto> {
-        return api.getRandomJokeFromCategory(categoryDto)
-    }
+    override fun getRandomJokeFromCategory(categoryDto: CategoryDto): Single<JokeDto> =
+        api.getRandomJokeFromCategory(categoryDto)
+
 }
