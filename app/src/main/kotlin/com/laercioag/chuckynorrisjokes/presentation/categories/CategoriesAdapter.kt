@@ -1,6 +1,5 @@
 package com.laercioag.chuckynorrisjokes.presentation.categories
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.laercioag.chuckynorrisjokes.R
 import com.laercioag.chuckynorrisjokes.domain.entity.Category
 import com.laercioag.chuckynorrisjokes.extensions.capitalizeWords
-import com.laercioag.chuckynorrisjokes.helper.ImageHelper
+import com.laercioag.chuckynorrisjokes.extensions.loadGif
 
 private const val LIST_ITEM_VIEW = 1
 private const val FOOTER_ITEM_VIEW = 2
 
-class CategoriesAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CategoriesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val items: MutableList<Category> = mutableListOf()
     var itemListener: (Category) -> Unit = { }
@@ -44,7 +43,7 @@ class CategoriesAdapter(private val context: Context) : RecyclerView.Adapter<Rec
             holder.title.text = items[position].description.capitalizeWords()
             holder.item.setOnClickListener { itemListener(items[position]) }
         } else if (holder is FooterViewHolder) {
-            ImageHelper.loadGif(context, holder.image, R.raw.chuck_norris_dancing)
+            holder.image.loadGif(R.raw.chuck_norris_dancing)
         }
     }
 

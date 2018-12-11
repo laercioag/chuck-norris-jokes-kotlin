@@ -65,7 +65,7 @@ class CategoriesFragment : BaseFragment(), CategoriesContract.View {
     }
 
     private fun setupRecyclerView() {
-        adapter = CategoriesAdapter(requireContext())
+        adapter = CategoriesAdapter()
         adapter.itemListener = this::navigateToRandomJoke
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.addItemDecoration(

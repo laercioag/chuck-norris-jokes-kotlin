@@ -12,8 +12,9 @@ import com.laercioag.chuckynorrisjokes.R
 import com.laercioag.chuckynorrisjokes.domain.entity.Category
 import com.laercioag.chuckynorrisjokes.domain.entity.Joke
 import com.laercioag.chuckynorrisjokes.extensions.invisible
+import com.laercioag.chuckynorrisjokes.extensions.loadGif
+import com.laercioag.chuckynorrisjokes.extensions.loadImage
 import com.laercioag.chuckynorrisjokes.extensions.visible
-import com.laercioag.chuckynorrisjokes.helper.ImageHelper
 import com.laercioag.chuckynorrisjokes.presentation.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_random_joke.*
 import kotlinx.android.synthetic.main.layout_footer.*
@@ -69,9 +70,9 @@ class RandomJokeFragment : BaseFragment(), RandomJokeContract.View {
     }
 
     override fun showJoke(joke: Joke) {
-        ImageHelper.loadImage(requireContext(), icon, joke.iconUrl)
+        icon.loadImage(joke.iconUrl)
         icon.visible()
-        ImageHelper.loadGif(requireContext(), footerImage, R.raw.chuck_norris_dancing)
+        footerImage.loadGif(R.raw.chuck_norris_dancing)
         footer.visible()
         phrase.text = joke.value
         phrase.visible()
