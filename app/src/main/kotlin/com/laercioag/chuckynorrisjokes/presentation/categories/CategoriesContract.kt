@@ -12,9 +12,9 @@ class CategoriesContract {
 
     }
 
-    interface Presenter : BasePresenter<View> {
+    abstract class Presenter : BasePresenter<View>() {
 
-        fun getCategories()
+        abstract fun getCategories()
 
     }
 }

@@ -10,12 +10,12 @@ class RandomJokeContract {
     interface View : BaseView {
 
         fun showJoke(joke: Joke)
-        
+
     }
 
-    interface Presenter : BasePresenter<View> {
+    abstract class Presenter : BasePresenter<View>() {
 
-        fun getRandomJoke(category: Category)
+        abstract fun getRandomJoke(category: Category)
 
     }
 }

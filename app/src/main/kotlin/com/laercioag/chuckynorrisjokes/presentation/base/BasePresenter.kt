@@ -1,8 +1,17 @@
 package com.laercioag.chuckynorrisjokes.presentation.base
 
-interface BasePresenter<V : BaseView> {
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 
-    fun attach(view: V)
+abstract class BasePresenter<V : BaseView> {
 
-    fun detach()
+    protected val compositeDisposable = CompositeDisposable()
+
+    abstract fun attach(view: V)
+
+    abstract fun detach()
+
+    protected fun Disposable.disposeOnDetach() {
+        compositeDisposable.add(this)
+    }
 }
