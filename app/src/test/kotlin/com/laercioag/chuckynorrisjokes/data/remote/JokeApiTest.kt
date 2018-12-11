@@ -1,8 +1,8 @@
 package com.laercioag.chuckynorrisjokes.data.remote
 
-import com.laercioag.chuckynorrisjokes.TestUtils.Companion.getJson
-import com.laercioag.chuckynorrisjokes.data.remote.impl.CategoryApiImpl
-import junit.framework.TestCase.assertEquals
+import com.laercioag.chuckynorrisjokes.TestUtils
+import com.laercioag.chuckynorrisjokes.TestUtils.Companion.getTestCategoryDto
+import junit.framework.TestCase
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
@@ -11,11 +11,12 @@ import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.net.URLEncoder
 
-class CategoryApiImplTest {
+class JokeApiTest {
 
     private lateinit var mockWebServer: MockWebServer
-    private lateinit var api: CategoryApi
+    private lateinit var api: JokeApi
 
     @Before
     fun before() {
@@ -29,47 +30,37 @@ class CategoryApiImplTest {
             .build()
         val service = retrofit.create(RemoteService::class.java)
 
-        api = CategoryApiImpl(service)
+        api = JokeApi(service)
     }
 
     @Test
-    fun testWhenGetCategoriesReturnsListOfCategories() {
-        val path = "/categories"
+    fun testWhenGetRandomJokeFromCategoryReturnsJoke() {
+        val category = getTestCategoryDto()
+        val path = "/random?category=" + URLEncoder.encode(category, "UTF-8")
+            .replace("+", "%20")
         val mockResponse = MockResponse()
             .setResponseCode(200)
-            .setBody(getJson("json/category/categories.json"))
+            .setBody(TestUtils.getJson("json/joke/joke.json"))
         mockWebServer.enqueue(mockResponse)
-        api.getCategories().test()
+        api.getRandomJokeFromCategory(getTestCategoryDto()).test()
             .assertNoErrors()
             .assertValueCount(1)
         val request = mockWebServer.takeRequest()
-        assertEquals(path, request.path)
+        TestCase.assertEquals(path, request.path)
     }
 
     @Test
-    fun testWhenGetCategoriesReturnsEmptyListOfCategories() {
-        val path = "/categories"
-        val mockResponse = MockResponse()
-            .setResponseCode(200)
-            .setBody(getJson("json/category/categories_empty.json"))
-        mockWebServer.enqueue(mockResponse)
-        api.getCategories().test()
-            .assertNoErrors()
-            .assertValueCount(1)
-        val request = mockWebServer.takeRequest()
-        assertEquals(path, request.path)
-    }
-
-    @Test
-    fun testWhenGetCategoriesReturnsError() {
-        val path = "/categories"
+    fun testWhenGetRandomJokeFromCategoryReturnsError() {
+        val category = getTestCategoryDto()
+        val path = "/random?category=" + URLEncoder.encode(category, "UTF-8")
+            .replace("+", "%20")
         val mockResponse = MockResponse()
             .setResponseCode(500)
         mockWebServer.enqueue(mockResponse)
-        api.getCategories().test()
+        api.getRandomJokeFromCategory(category).test()
             .assertNoValues()
         val request = mockWebServer.takeRequest()
-        assertEquals(path, request.path)
+        TestCase.assertEquals(path, request.path)
     }
 
     @After

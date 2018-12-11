@@ -3,7 +3,6 @@ package com.laercioag.chuckynorrisjokes.data.repository
 import com.laercioag.chuckynorrisjokes.TestUtils.Companion.getTestCategoryDto
 import com.laercioag.chuckynorrisjokes.TestUtils.Companion.getTestJokeDto
 import com.laercioag.chuckynorrisjokes.data.remote.JokeApi
-import com.laercioag.chuckynorrisjokes.data.remote.impl.JokeApiImpl
 import com.laercioag.chuckynorrisjokes.data.repository.impl.JokeRepositoryImpl
 import io.reactivex.Single
 import org.junit.Before
@@ -18,7 +17,7 @@ class JokeDtoRepositoryImplTest {
 
     @Before
     fun before() {
-        api = Mockito.mock(JokeApiImpl::class.java)
+        api = Mockito.mock(JokeApi::class.java)
         repository = JokeRepositoryImpl(api)
     }
 

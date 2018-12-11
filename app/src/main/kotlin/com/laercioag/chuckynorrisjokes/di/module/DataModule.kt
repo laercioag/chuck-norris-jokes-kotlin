@@ -1,10 +1,8 @@
 package com.laercioag.chuckynorrisjokes.di.module
 
+import com.laercioag.chuckynorrisjokes.data.remote.RemoteService
 import com.laercioag.chuckynorrisjokes.data.remote.CategoryApi
 import com.laercioag.chuckynorrisjokes.data.remote.JokeApi
-import com.laercioag.chuckynorrisjokes.data.remote.impl.CategoryApiImpl
-import com.laercioag.chuckynorrisjokes.data.remote.impl.JokeApiImpl
-import com.laercioag.chuckynorrisjokes.data.remote.RemoteService
 import com.laercioag.chuckynorrisjokes.data.repository.CategoryRepository
 import com.laercioag.chuckynorrisjokes.data.repository.JokeRepository
 import com.laercioag.chuckynorrisjokes.data.repository.impl.CategoryRepositoryImpl
@@ -47,7 +45,7 @@ class DataModule {
     @Provides
     @Singleton
     fun provideCategoryApi(service: RemoteService): CategoryApi =
-        CategoryApiImpl(service)
+        CategoryApi(service)
 
     @Provides
     @Singleton
@@ -57,7 +55,7 @@ class DataModule {
     @Provides
     @Singleton
     fun provideJokeApi(service: RemoteService): JokeApi =
-        JokeApiImpl(service)
+        JokeApi(service)
 
     @Provides
     @Singleton

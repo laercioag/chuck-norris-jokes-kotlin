@@ -2,7 +2,6 @@ package com.laercioag.chuckynorrisjokes.data.repository
 
 import com.laercioag.chuckynorrisjokes.TestUtils.Companion.generateCategoryDtoList
 import com.laercioag.chuckynorrisjokes.data.remote.CategoryApi
-import com.laercioag.chuckynorrisjokes.data.remote.impl.CategoryApiImpl
 import com.laercioag.chuckynorrisjokes.data.repository.impl.CategoryRepositoryImpl
 import io.reactivex.Single
 import org.junit.Before
@@ -18,7 +17,7 @@ class CategoryRepositoryImplTest {
 
     @Before
     fun before() {
-        api = mock(CategoryApiImpl::class.java)
+        api = mock(CategoryApi::class.java)
         repository = CategoryRepositoryImpl(api)
 
     }

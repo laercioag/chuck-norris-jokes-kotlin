@@ -1,9 +1,12 @@
 package com.laercioag.chuckynorrisjokes.data.remote
 
 import com.laercioag.chuckynorrisjokes.data.dto.CategoryDto
+import com.laercioag.chuckynorrisjokes.data.remote.RemoteService
 import io.reactivex.Single
 
-interface CategoryApi {
+class CategoryApi(private val service: RemoteService) {
 
-    fun getCategories(): Single<List<CategoryDto>>
+    fun getCategories(): Single<List<CategoryDto>> {
+        return service.getCategories()
+    }
 }
