@@ -16,7 +16,7 @@ class CategoriesPresenter(private val getCategoriesUseCase: GetCategoriesUseCase
     override fun getCategories() {
         view?.showLoading()
         compositeDisposable.add(
-            getCategoriesUseCase.run()
+            getCategoriesUseCase()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

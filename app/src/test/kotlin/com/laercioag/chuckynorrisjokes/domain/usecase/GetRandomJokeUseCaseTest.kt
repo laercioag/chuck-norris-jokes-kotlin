@@ -37,7 +37,7 @@ class GetRandomJokeUseCaseTest {
         val categoryDto: CategoryDto = getTestCategoryDto()
         val category: Category = categoryDtoMapper.map(categoryDto)
         `when`(repository.getRandomJokeFromCategory(categoryDto)).thenReturn(Single.just(jokeDto))
-        getRandomJokeUseCase.run(category).test()
+        getRandomJokeUseCase(category).test()
             .assertNoErrors()
             .assertValueCount(1)
             .assertValue(jokeResult)
@@ -48,7 +48,7 @@ class GetRandomJokeUseCaseTest {
         val categoryDto: CategoryDto = getTestCategoryDto()
         val category: Category = categoryDtoMapper.map(categoryDto)
         `when`(repository.getRandomJokeFromCategory(categoryDto)).thenReturn(Single.error(RuntimeException()))
-        getRandomJokeUseCase.run(category).test()
+        getRandomJokeUseCase(category).test()
             .assertError(RuntimeException::class.java)
             .assertValueCount(0)
     }

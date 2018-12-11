@@ -33,7 +33,7 @@ class CategoryPresenterTest {
     @Test
     fun testWhenGetCategoriesReturnsExpectedResult() {
         val categoryResult = generateCategoryList()
-        `when`(getCategoriesUseCase.run()).thenReturn(Single.just(categoryResult))
+        `when`(getCategoriesUseCase()).thenReturn(Single.just(categoryResult))
         categoriesPresenter.attach(view)
         categoriesPresenter.getCategories()
         verify(view, times(1)).showLoading()
@@ -44,7 +44,7 @@ class CategoryPresenterTest {
     @Test
     fun testWhenGetCategoriesReturnsError() {
         val error = RuntimeException()
-        `when`(getCategoriesUseCase.run()).thenReturn(Single.error(error))
+        `when`(getCategoriesUseCase()).thenReturn(Single.error(error))
         categoriesPresenter.attach(view)
         categoriesPresenter.getCategories()
         verify(view, times(1)).showLoading()

@@ -35,7 +35,7 @@ class RandomJokePresenterTest {
     fun testWhenGetCategoriesReturnsExpectedResult() {
         val jokeResult: Joke = getTestJoke()
         val category: Category = getTestCategory()
-        Mockito.`when`(getRandomJokeUseCase.run(category)).thenReturn(Single.just(jokeResult))
+        Mockito.`when`(getRandomJokeUseCase(category)).thenReturn(Single.just(jokeResult))
         categoriesPresenter.attach(view)
         categoriesPresenter.getRandomJoke(category)
         Mockito.verify(view, Mockito.times(1)).showLoading()
@@ -47,7 +47,7 @@ class RandomJokePresenterTest {
     fun testWhenGetCategoriesReturnsError() {
         val error = RuntimeException()
         val category: Category = getTestCategory()
-        Mockito.`when`(getRandomJokeUseCase.run(category)).thenReturn(Single.error(error))
+        Mockito.`when`(getRandomJokeUseCase(category)).thenReturn(Single.error(error))
         categoriesPresenter.attach(view)
         categoriesPresenter.getRandomJoke(category)
         Mockito.verify(view, Mockito.times(1)).showLoading()

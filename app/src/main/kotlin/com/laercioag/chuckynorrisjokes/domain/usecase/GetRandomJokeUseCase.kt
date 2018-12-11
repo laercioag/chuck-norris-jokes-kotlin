@@ -19,4 +19,6 @@ class GetRandomJokeUseCase(
             .map(jokeDtoMapper::map)
     }
 
+    operator fun invoke(category: Category): Single<Joke> = run(category)
+
 }

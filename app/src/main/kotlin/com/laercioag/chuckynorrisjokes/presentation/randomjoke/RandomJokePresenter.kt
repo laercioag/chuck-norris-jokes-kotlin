@@ -26,7 +26,7 @@ class RandomJokePresenter(private val getRandomJokeUseCase: GetRandomJokeUseCase
     override fun getRandomJoke(category: Category) {
         view?.showLoading()
         compositeDisposable.add(
-            getRandomJokeUseCase.run(category)
+            getRandomJokeUseCase(category)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

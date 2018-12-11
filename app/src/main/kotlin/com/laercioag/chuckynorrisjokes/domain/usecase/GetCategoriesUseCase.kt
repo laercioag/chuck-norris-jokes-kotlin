@@ -14,4 +14,6 @@ class GetCategoriesUseCase(
         repository.getCategories()
             .map { mapper.mapList(it).sortedBy { category -> category.description } }
 
+    operator fun invoke(): Single<List<Category>> = run()
+
 }

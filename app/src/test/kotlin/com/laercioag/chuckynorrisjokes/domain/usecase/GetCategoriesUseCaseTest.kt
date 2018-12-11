@@ -27,7 +27,7 @@ class GetCategoriesUseCaseTest {
         val categoryDtoList = generateCategoryDtoList()
         val categoryResult = categoryDtoList.map(mapper::map)
         `when`(repository.getCategories()).thenReturn(Single.just(categoryDtoList))
-        getCategoriesUseCase.run().test()
+        getCategoriesUseCase().test()
             .assertNoErrors()
             .assertValueCount(1)
             .assertValue(categoryResult)
@@ -36,7 +36,7 @@ class GetCategoriesUseCaseTest {
     @Test
     fun testWhenGetCategoriesUseCaseReturnsError() {
         `when`(repository.getCategories()).thenReturn(Single.error(RuntimeException()))
-        getCategoriesUseCase.run().test()
+        getCategoriesUseCase().test()
             .assertError(RuntimeException::class.java)
             .assertValueCount(0)
     }
