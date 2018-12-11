@@ -10,13 +10,8 @@ class GetCategoriesUseCase(
     private val mapper: CategoryDtoMapper
 ) {
 
-    fun run(): Single<List<Category>> {
-        return repository.getCategories()
-            .map(mapper::mapList)
-            .map { t: List<Category> ->
-                t.sortedBy {
-                    it.description
-                }
-            }
-    }
+    fun run(): Single<List<Category>> =
+        repository.getCategories()
+            .map { mapper.mapList(it).sortedBy { category -> category.description } }
+
 }
