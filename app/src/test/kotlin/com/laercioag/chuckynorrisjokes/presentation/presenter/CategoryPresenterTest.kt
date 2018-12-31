@@ -1,7 +1,6 @@
 package com.laercioag.chuckynorrisjokes.presentation.presenter
 
 import com.laercioag.chuckynorrisjokes.TestUtils.Companion.generateCategoryList
-import com.laercioag.chuckynorrisjokes.domain.mapper.CategoryDtoMapper
 import com.laercioag.chuckynorrisjokes.domain.usecase.GetCategoriesUseCase
 import com.laercioag.chuckynorrisjokes.presentation.categories.CategoriesContract
 import com.laercioag.chuckynorrisjokes.presentation.categories.CategoriesPresenter
@@ -17,14 +16,12 @@ class CategoryPresenterTest {
 
     private lateinit var getCategoriesUseCase: GetCategoriesUseCase
     private lateinit var categoriesPresenter: CategoriesPresenter
-    private lateinit var mapper: CategoryDtoMapper
     private lateinit var view: CategoriesContract.View
 
     @Before
     fun before() {
         RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
-        mapper = CategoryDtoMapper()
         getCategoriesUseCase = mock(GetCategoriesUseCase::class.java)
         view = mock(CategoriesContract.View::class.java)
         categoriesPresenter = CategoriesPresenter(getCategoriesUseCase)
